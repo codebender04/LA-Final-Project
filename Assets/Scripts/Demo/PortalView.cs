@@ -13,13 +13,13 @@ public class PortalView : MonoBehaviour
 
         // 2. Flip the relative position (Portals are usually back-to-back logic)
         // We rotate the position 180 degrees around the Y axis
-        relativePos = Quaternion.Euler(0, 180, 0) * relativePos;
+        //relativePos = Quaternion.Euler(0, 180, 0) * relativePos;
 
         // 3. Set the Yellow View's position relative to the exit portal
         transform.position = portalExit.TransformPoint(relativePos);
 
         // 4. Handle Rotation
         Quaternion relativeRot = Quaternion.Inverse(portalEnter.rotation) * player.rotation;
-        transform.rotation = portalExit.rotation * Quaternion.Euler(0, 180, 0) * relativeRot;
+        transform.rotation = portalExit.rotation * relativeRot;
     }
 }
